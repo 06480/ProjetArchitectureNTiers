@@ -44,13 +44,17 @@ mongoose
       user.save((err, user) => {
         console.log(user);
       });
-      //(new User(JSON.parse(user))).save();
+
       res.json();
     });
     app.delete("/users/delete/:id", (req, res) => {
       User.findByIdAndDelete(req.params.id, (err, user) => {
         console.log(err);
       });
+    });
+    app.patch("/users/change/:id/:name/:email/:password", (req, res) => {
+      User.findByIdAndUpdate(req.params.id, { name: req.params.name, email: req.params.email, password: req.params.password }, (err, user) => {});
+      res.status(204).send();
     });
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
