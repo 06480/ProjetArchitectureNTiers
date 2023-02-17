@@ -24,10 +24,16 @@ mongoose
   .connect("mongodb+srv://paulmessiant:epsi2023@cluster0.d7h8lhq.mongodb.net/ubeer", { useNewUrlParser: true, useUnifiedTopology: true })
   .then((r) => {
     console.log("connection réussie");
-    app.get("/user/:userId", (req, res) => {
+    app.get("/users", (req, res) => {
+      User.find({}, (err, documents) => {
+        res.json(documents);
+      });
+    });
+    app.get("/users/:userId", (req, res) => {
       let id = req.params.userId;
       User.findById(id).then((user) => res.json(user));
     });
+
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
     });
