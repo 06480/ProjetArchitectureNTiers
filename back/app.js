@@ -47,6 +47,11 @@ mongoose
       //(new User(JSON.parse(user))).save();
       res.json();
     });
+    app.delete("/users/delete/:id", (req, res) => {
+      User.findByIdAndDelete(req.params.id, (err, user) => {
+        console.log(err);
+      });
+    });
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
     });
