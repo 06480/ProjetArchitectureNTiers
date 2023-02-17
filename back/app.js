@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
   email: String,
+  password: String,
 });
 const beerSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -33,7 +34,19 @@ mongoose
       let id = req.params.userId;
       User.findById(id).then((user) => res.json(user));
     });
-
+    app.post("/users/create/:name/:email/:password", (req, res) => {
+      let user = new User({
+        _id: mongoose.Types.ObjectId(),
+        name: req.params.name,
+        email: req.params.email,
+        password: req.params.password,
+      });
+      user.save((err, user) => {
+        console.log(user);
+      });
+      //(new User(JSON.parse(user))).save();
+      res.json();
+    });
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
     });
