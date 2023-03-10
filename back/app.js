@@ -64,3 +64,46 @@ mongoose
     console.log(e);
     console.log("Connexion à MongoDB échouée !");
   });
+
+  mongoose
+  .connect("mongodb+srv://paulmessiant:epsi2023@cluster0.d7h8lhq.mongodb.net/ubeer", { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((r) => {
+    console.log("connection réussie");
+    app.get("/beers", (req, res) => {
+      Beer.find({}, (err, documents) => {
+        res.json(documents);
+      });
+    });
+    app.get("/beers/:beerId", (req, res) => {
+      let id = req.params.beerId;
+      Beer.findById(id).then((beer) => res.json(beer));
+    });
+    app.post("/beers/create/:brand/:volume", (req, res) => {
+      let beer = new Beer({
+        _id: mongoose.Types.ObjectId(),
+        brand: req.params.brand,
+        volume: req.params.email,
+      });
+      beer.save((err, beer) => {
+        console.log(beer);
+      });
+
+      res.json();
+    });
+    app.delete("/beers/delete/:id", (req, res) => {
+      Beer.findByIdAndDelete(req.params.id, (err, beer) => {
+        console.log(err);
+      });
+    });
+    app.patch("/beers/change/:id/:brand/:volume", (req, res) => {
+      Beer.findByIdAndUpdate(req.params.id, { brand: req.params.brand, volume: req.params.volume }, (err, beer) => {});
+      res.status(204).send();
+    });
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+  })
+  .catch((e) => {
+    console.log(e);
+    console.log("Connexion à MongoDB échouée !");
+  });
