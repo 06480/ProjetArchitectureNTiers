@@ -24,8 +24,10 @@ app
     createAuth0({
       domain: authConfig.domain,
       clientId: authConfig.clientId,
+
       authorizationParams: {
         redirect_uri: window.location.origin,
+        audience:"https//www.ubeer.com"
       }
     })
   )

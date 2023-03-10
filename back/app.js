@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 const express = require("express");
+var cors = require("cors");
 const { auth } = require("express-oauth2-jwt-bearer");
 const app = express();
+app.use(cors());
+
 const port = 8000;
 const jwtCheck = auth({
-  audience: "https://127.0.0.1:3000",
+  audience: "https//www.ubeer.com",
   issuerBaseURL: "https://dev-s15hjodwpfsobczx.eu.auth0.com/",
   tokenSigningAlg: "RS256",
 });
@@ -32,6 +35,7 @@ mongoose
   .then((r) => {
     console.log("connection réussie");
     app.use(jwtCheck);
+
     app.get("/authorized", function (req, res) {
       res.send("Secured Resource");
     });
@@ -70,7 +74,11 @@ mongoose
       User.findByIdAndUpdate(req.params.id, { name: req.params.name, email: req.params.email, password: req.params.password }, (err, user) => {});
       res.status(204).send();
     });
-
+    app.get("/beers/", (req, res) => {
+      Beer.find({}, (err, documents) => {
+        res.json(documents);
+      });
+    });
     app.get("/beers/:beerId", (req, res) => {
       let id = req.params.beerId;
       Beer.findById(id).then((beer) => res.json(beer));
