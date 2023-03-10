@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const { auth } = require("express-oauth2-jwt-bearer");
 const app = express();
-const port = 3000;
+const port = 8000;
+const jwtCheck = auth({
+  audience: "https://127.0.0.1:3000",
+  issuerBaseURL: "https://dev-s15hjodwpfsobczx.eu.auth0.com/",
+  tokenSigningAlg: "RS256",
+});
 const userSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
@@ -25,12 +31,20 @@ mongoose
   .connect("mongodb+srv://paulmessiant:epsi2023@cluster0.d7h8lhq.mongodb.net/ubeer", { useNewUrlParser: true, useUnifiedTopology: true })
   .then((r) => {
     console.log("connection réussie");
+    app.use(jwtCheck);
+    app.get("/authorized", function (req, res) {
+      res.send("Secured Resource");
+    });
+    app.get("/callback", (req, res) => {
+      res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+    });
     app.get("/users", (req, res) => {
       User.find({}, (err, documents) => {
         res.json(documents);
       });
     });
     app.get("/users/:userId", (req, res) => {
+      console.log(req.body);
       let id = req.params.userId;
       User.findById(id).then((user) => res.json(user));
     });
@@ -56,7 +70,6 @@ mongoose
       User.findByIdAndUpdate(req.params.id, { name: req.params.name, email: req.params.email, password: req.params.password }, (err, user) => {});
       res.status(204).send();
     });
-
 
     app.get("/beers/:beerId", (req, res) => {
       let id = req.params.beerId;
@@ -84,7 +97,6 @@ mongoose
       res.status(204).send();
     });
 
-
     app.get("/breweries/:breweryId", (req, res) => {
       let id = req.params.breweryId;
       Brewery.findById(id).then((brewery) => res.json(brewery));
@@ -110,7 +122,6 @@ mongoose
       Brewery.findByIdAndUpdate(req.params.id, { name: req.params.name, address: req.params.address }, (err, brewery) => {});
       res.status(204).send();
     });
-
 
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
