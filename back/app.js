@@ -56,24 +56,6 @@ mongoose
       User.findByIdAndUpdate(req.params.id, { name: req.params.name, email: req.params.email, password: req.params.password }, (err, user) => {});
       res.status(204).send();
     });
-    app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
-    });
-  })
-  .catch((e) => {
-    console.log(e);
-    console.log("Connexion à MongoDB échouée !");
-  });
-
-  mongoose
-  .connect("mongodb+srv://paulmessiant:epsi2023@cluster0.d7h8lhq.mongodb.net/ubeer", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((r) => {
-    console.log("connection réussie");
-    app.get("/beers", (req, res) => {
-      Beer.find({}, (err, documents) => {
-        res.json(documents);
-      });
-    });
     app.get("/beers/:beerId", (req, res) => {
       let id = req.params.beerId;
       Beer.findById(id).then((beer) => res.json(beer));
