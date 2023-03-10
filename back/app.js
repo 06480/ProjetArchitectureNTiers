@@ -64,7 +64,7 @@ mongoose
       let beer = new Beer({
         _id: mongoose.Types.ObjectId(),
         brand: req.params.brand,
-        volume: req.params.email,
+        volume: req.params.volume,
       });
       beer.save((err, beer) => {
         console.log(beer);
