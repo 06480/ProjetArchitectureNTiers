@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const bodyParser = require("body-parser");
 var cors = require("cors");
 const { auth } = require("express-oauth2-jwt-bearer");
 const app = express();
+const jsonParser = bodyParser.json();
 app.use(cors());
-
+app.use(jsonParser);
 const port = 8000;
 const jwtCheck = auth({
   audience: "https//www.ubeer.com",
@@ -48,16 +50,16 @@ mongoose
       });
     });
     app.get("/users/:userId", (req, res) => {
-      console.log(req.body);
       let id = req.params.userId;
       User.findById(id).then((user) => res.json(user));
     });
-    app.post("/users/create/:name/:email/:password", (req, res) => {
+
+    app.post("/users/create", jsonParser, (req, res) => {
       let user = new User({
         _id: mongoose.Types.ObjectId(),
-        name: req.params.name,
-        email: req.params.email,
-        password: req.params.password,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
       });
       user.save((err, user) => {
         console.log(user);
@@ -70,8 +72,9 @@ mongoose
         console.log(err);
       });
     });
-    app.patch("/users/change/:id/:name/:email/:password", (req, res) => {
-      User.findByIdAndUpdate(req.params.id, { name: req.params.name, email: req.params.email, password: req.params.password }, (err, user) => {});
+
+    app.patch("/users/change/:id", jsonParser, (req, res) => {
+      User.findByIdAndUpdate(req.params.id, { name: req.body.name, email: req.body.email, password: req.body.password }, (err, user) => {});
       res.status(204).send();
     });
     app.get("/beers/", (req, res) => {
@@ -83,11 +86,12 @@ mongoose
       let id = req.params.beerId;
       Beer.findById(id).then((beer) => res.json(beer));
     });
-    app.post("/beers/create/:brand/:volume", (req, res) => {
+    ///:brand/:volume
+    app.post("/beers/create", jsonParser, (req, res) => {
       let beer = new Beer({
         _id: mongoose.Types.ObjectId(),
-        brand: req.params.brand,
-        volume: req.params.volume,
+        brand: req.body.brand,
+        volume: req.body.volume,
       });
       beer.save((err, beer) => {
         console.log(beer);
@@ -100,8 +104,8 @@ mongoose
         console.log(err);
       });
     });
-    app.patch("/beers/change/:id/:brand/:volume", (req, res) => {
-      Beer.findByIdAndUpdate(req.params.id, { brand: req.params.brand, volume: req.params.volume }, (err, beer) => {});
+    app.patch("/beers/change/:id", jsonParser, (req, res) => {
+      Beer.findByIdAndUpdate(req.params.id, { brand: req.body.brand, volume: req.body.volume }, (err, beer) => {});
       res.status(204).send();
     });
 
@@ -109,11 +113,11 @@ mongoose
       let id = req.params.breweryId;
       Brewery.findById(id).then((brewery) => res.json(brewery));
     });
-    app.post("/breweries/create/:name/:address", (req, res) => {
+    app.post("/breweries/create", jsonParser, (req, res) => {
       let brewery = new Brewery({
         _id: mongoose.Types.ObjectId(),
-        name: req.params.name,
-        address: req.params.address,
+        name: req.body.name,
+        address: req.body.address,
       });
       brewery.save((err, brewery) => {
         console.log(brewery);
@@ -126,13 +130,13 @@ mongoose
         console.log(err);
       });
     });
-    app.patch("/breweries/change/:id/:name/:address", (req, res) => {
-      Brewery.findByIdAndUpdate(req.params.id, { name: req.params.name, address: req.params.address }, (err, brewery) => {});
+    app.patch("/breweries/change/:id", jsonParser, (req, res) => {
+      Brewery.findByIdAndUpdate(req.params.id, { name: req.body.name, address: req.body.address }, (err, brewery) => {});
       res.status(204).send();
     });
 
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      console.log(`écoute du port: ${port}`);
     });
   })
   .catch((e) => {
