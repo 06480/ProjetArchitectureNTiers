@@ -10,6 +10,9 @@
         {{ biere["brand"] }}
       </v-card-title>
       <v-card-item>
+        description: {{ biere["description"] }}
+      </v-card-item>
+      <v-card-item>
         volume: {{ biere["volume"] }}
       </v-card-item>
     </v-card>
