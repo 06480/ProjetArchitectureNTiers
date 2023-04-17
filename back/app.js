@@ -23,6 +23,7 @@ const beerSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   brand: String,
   volume: Number,
+  description: String,
 });
 const brewerySchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -92,6 +93,7 @@ mongoose
         _id: mongoose.Types.ObjectId(),
         brand: req.body.brand,
         volume: req.body.volume,
+        description: req.body.description
       });
       beer.save((err, beer) => {
         console.log(beer);
