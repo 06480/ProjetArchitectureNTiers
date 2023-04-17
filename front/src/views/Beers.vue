@@ -47,7 +47,7 @@ export default {
       console.log(token);
 
       axios
-        .get("http://localhost:8000/beers/", {
+        .get("https://ubeer.onrender.com/beers", {
           headers: {
             authorization: "Bearer " + token,
           },
