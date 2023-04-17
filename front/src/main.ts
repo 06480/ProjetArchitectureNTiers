@@ -10,13 +10,18 @@ import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
 import "highlight.js/styles/github.css";
-
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { createVuetify } from "vuetify/lib/framework.mjs";
 hljs.registerLanguage('json', json);
 
 const app = createApp(App);
-
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 library.add(faLink, faUser, faPowerOff);
-
+app.use(vuetify)
 app
   .use(hljsVuePlugin)
   .use(createRouter(app))
