@@ -10,10 +10,10 @@
         {{ biere["brand"] }}
       </v-card-title>
       <v-card-item>
-        description: {{ biere["description"] }}
+      {{ biere["description"] }}
       </v-card-item>
       <v-card-item>
-        volume: {{ biere["volume"] }}
+        volume: {{ biere["volume"] }} cl
       </v-card-item>
     </v-card>
   </ul>
@@ -37,8 +37,7 @@ export default {
     construireListeBieresFiltre(){
       this.listeBieresFiltre = this.listeBieres.filter(e => {
         let brand:string = e["brand"];
-        console.log(`marque = ${brand}, predicat (${brand} commence par  ${this.saisieUtilisateurBierre}) = ${ brand.startsWith(this.saisieUtilisateurBierre)}`)
-         return  brand.startsWith(this.saisieUtilisateurBierre);
+        return  brand.toLowerCase().startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
 
     },
