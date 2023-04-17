@@ -2,7 +2,8 @@
   <div class="nav-container mb-3">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container">
-        <div class="navbar-brand logo"></div>
+        <!-- <div class="navbar-brand logo"></div> -->
+        <img class="logo-heineken" src="/heineken.png" alt="heineken la meilleur biere">
         <button
           class="navbar-toggler"
           type="button"
@@ -126,5 +127,8 @@ export default {
 #mobileAuthNavBar {
   min-height: 125px;
   justify-content: space-between;
+}
+.logo-heineken{
+  width:7%;
 }
 </style>
