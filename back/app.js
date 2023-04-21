@@ -56,6 +56,12 @@ mongoose
         res.json(documents);
       });
     });
+    app.get("/findUserByMail/:mail", (req, res) => {
+      let mail = req.params.userId;
+      Basket.findOne({ address: mail }, function (err, value) {
+        res.json(value);
+      });
+    });
     app.get("/baskets/:basketId", (req, res) => {
       let id = req.params.userId;
       User.findById(id).then((user) => res.json(user));

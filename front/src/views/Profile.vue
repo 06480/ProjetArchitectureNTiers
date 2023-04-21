@@ -21,16 +21,32 @@
 </template>
 
 <script lang="ts">
-import { useAuth0 } from '@auth0/auth0-vue';
-
+import { useAuth0 } from "@auth0/auth0-vue";
+import axios, { Axios } from "axios";
 export default {
   name: "profile-view",
   setup() {
     const auth0 = useAuth0();
-    
+
     return {
       user: auth0.user,
-    }
-  }
+    };
+  },
+  async mounted() {
+    let token = await this.$auth0.getAccessTokenSilently();
+    axios.post(
+      "https://ubeer.onrender.com/users/create",
+      {
+        email: this.user.address,
+        name: this.user.name,
+        password: "",
+      },
+      {
+        headers: {
+          authorization: "Bearer " + token,
+        },
+      }
+    );
+  },
 };
 </script>

@@ -26,7 +26,7 @@
       <v-btn>
         <trash-icon @click="deleteBeer(biere['_id'])"></trash-icon>
       </v-btn>
-      <v-btn> Ajouter au panier </v-btn>
+      <v-btn @click="ajoutPanier()"> Ajouter au panier </v-btn>
       <v-card-title>
         {{ biere["brand"] }}
       </v-card-title>
@@ -41,11 +41,13 @@
 import { AUTH0_TOKEN } from "@auth0/auth0-vue/dist/typings/token";
 import { stringifyExpression } from "@vue/compiler-core";
 import axios, { Axios } from "axios";
+import { useAuth0 } from "@auth0/auth0-vue";
 //import { useAuth0 } from '@auth0/auth0-vue';
 export default {
   name: "profile-view",
   data() {
     return {
+      mail: "",
       listeBieres: [],
       listeBieresFiltre: [],
       saisieUtilisateurBierre: "",
@@ -65,8 +67,16 @@ export default {
   },
   created() {
     this.initalisation();
+    this.mail = useAuth0().user.value.address!;
   },
   methods: {
+    async findUserInDatabase() {
+      axios
+        .get(`https://ubeer.onrender.com/findUserByMail/${this.mail}`)
+        .then((reponse) => {
+          console.log(reponse.data);
+        });
+    },
     construireListeBieresFiltre() {
       this.listeBieresFiltre = this.listeBieres.filter((e) => {
         let brand: string = e["brand"];
@@ -118,6 +128,7 @@ export default {
             console.log("-".repeat(50));
           });
     },
+    async ajoutPanier() {},
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
 
