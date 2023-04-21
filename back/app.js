@@ -110,10 +110,15 @@ mongoose
       Beer.findByIdAndUpdate(req.params.id, { brand: req.body.brand, volume: req.body.volume }, (err, beer) => {});
       res.status(204).send();
     });
-
+    
     app.get("/breweries/:breweryId", (req, res) => {
       let id = req.params.breweryId;
       Brewery.findById(id).then((brewery) => res.json(brewery));
+    });
+    app.get("/breweries/", (req, res) => {
+      Brewery.find({}, (err, documents) => {
+        res.json(documents);
+      });
     });
     app.post("/breweries/create", jsonParser, (req, res) => {
       let brewery = new Brewery({
