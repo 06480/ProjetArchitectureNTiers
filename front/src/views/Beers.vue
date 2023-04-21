@@ -13,7 +13,6 @@
       <v-btn id="btn" @click="createBeer" type="submit" block class="mt-2"
         >Submit</v-btn
       >
-      
     </v-form>
   </v-sheet>
   <v-text-field
@@ -26,7 +25,6 @@
     <v-card>
       <v-card-title>
         {{ biere["brand"] }}
-        <v-icon prepend-icon="mdi-delete" @click="deleteBeer(biere["_id"])"> </v-icon>
       </v-card-title>
       <v-card-item>
         {{ biere["description"] }}
@@ -73,48 +71,34 @@ export default {
           .startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
     },
-    async deleteBeer(idBierre:number) {
-      let token = await this.$auth0.getAccessTokenSilently();
-
-      axios
-        .get("https://ubeer.onrender.com/beers", {
-          headers: {
-            authorization: "Bearer " + token,
-          },
-        }).then(async (e) => {
-          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
-            headers: {
-              authorization: "Bearer " + token,
-            },
-          });
-        });
-    },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      axios
-        .post(
-          "https://ubeer.onrender.com/beers/create",
-          {
-            brand: this.brand,
-            description: this.description,
-            volume: this.volume,
-          },
-          {
-            headers: {
-              authorization: "Bearer " + token,
+      if (this.brand === "" || this.description === "" || this.volume === "") {
+        axios
+          .post(
+            "https://ubeer.onrender.com/beers/create",
+            {
+              brand: this.brand,
+              description: this.description,
+              volume: this.volume,
             },
-          }
-        )
-        .then((r) => {
-          console.log("createbeer");
-          window.location.href = "https://ubeer12.netlify.app/#/beers";
-        })
-        .catch((error) => {
-          console.log("-".repeat(50));
-          console.log(error);
-          console.log("-".repeat(50));
-        });
+            {
+              headers: {
+                authorization: "Bearer " + token,
+              },
+            }
+          )
+          .then((r) => {
+            console.log("createbeer");
+            window.location.href = "https://ubeer12.netlify.app/#/beers";
+          })
+          .catch((error) => {
+            console.log("-".repeat(50));
+            console.log(error);
+            console.log("-".repeat(50));
+          });
+      }
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
