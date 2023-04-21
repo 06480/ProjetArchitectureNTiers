@@ -84,12 +84,20 @@ export default {
       let token = await this.$auth0.getAccessTokenSilently();
       let idBierre: number;
       axios
-        .get("https://ubeer.onrender.com/beers")
+        .get("https://ubeer.onrender.com/beers", {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        })
         .then((reponse) => {
           idBierre = reponse.data.filter((e: any) => e["name"])[0];
         })
         .then(async (e) => {
-          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`);
+          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          });
         });
     },
     async createBeer() {
