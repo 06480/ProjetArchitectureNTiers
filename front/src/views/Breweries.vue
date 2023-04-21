@@ -124,7 +124,7 @@ export default {
 }
 .button-addbrasserie:hover {
   font-weight: bold;
-  background: grey;
+  background: grey !important;
   color: black;
 }
 </style>
