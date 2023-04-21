@@ -150,8 +150,8 @@ export default {
           });
     },
     async ajoutPanier() {
-      console.log(this.user!);
-      console.log(this.user!.address!);
+      console.log(this.user);
+      console.log(this.user.address);
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
