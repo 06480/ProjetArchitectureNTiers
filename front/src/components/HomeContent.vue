@@ -35,9 +35,10 @@ export default {
 }
 .studiants {
   width: 100%;
-  font-size: 0.5em;
+  font-size: 0.6em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-weight: bold;
 }
 </style>
