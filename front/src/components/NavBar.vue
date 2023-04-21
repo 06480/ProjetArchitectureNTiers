@@ -135,6 +135,6 @@ export default {
   width:7%;
 }
 .navbar {
-  background-color: #eff1f5;
+  background-color: #eff1f5 !important;
 }
 </style>
