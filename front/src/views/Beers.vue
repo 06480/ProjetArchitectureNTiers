@@ -83,15 +83,12 @@ export default {
             authorization: "Bearer " + token,
           },
         })
-        .then((r) => {
-          console.log("deletebeer");
-          location.reload();
-        })
         .catch((error) => {
           console.log("-".repeat(50));
           console.log(error);
           console.log("-".repeat(50));
         });
+      location.reload();
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
