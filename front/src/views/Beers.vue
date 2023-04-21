@@ -90,11 +90,11 @@ export default {
       showForm: false,
     };
   },
-  created() {
+ async created() {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
   },
-  async mounted() {
+  mounted() {
     console.log(this.user);
     console.log(this.user.value);
   },
