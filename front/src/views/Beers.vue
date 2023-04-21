@@ -90,6 +90,7 @@ export default {
           },
         })
         .then((reponse) => {
+          console.log(reponse.data)
           idBierre = reponse.data.filter((e: any) => {
             console.log(e["name"]);
             return e["name"];
