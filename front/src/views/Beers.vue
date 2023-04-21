@@ -1,21 +1,25 @@
 <template>
   <!-- barre de recherche -->
-  <v-text-field
+    <v-text-field
     v-if="token !== ''"
     label="entrer le nom d'une bière"
     v-model="saisieUtilisateurBierre"
     @input="construireListeBieresFiltre"
-  ></v-text-field>
+    >
+    </v-text-field>
+  
 
   <!-- bouton d'ajout de brasserie -->
   <v-btn
     v-if="token !== ''"
     class="button-addbrasserie"
     @click="showForm = !showForm"
+    id="btn-add"
   >
     Ajout d'une bière
   </v-btn>
 
+  <!-- formulaire d'ajout de brasserie -->
   <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="brand" label="Marque"></v-text-field>
@@ -33,6 +37,7 @@
     </v-form>
   </v-sheet>
 
+  <!-- liste des bières -->
   <ul v-for="biere in listeBieresFiltre">
     <v-card>
       <v-btn>
@@ -48,7 +53,9 @@
       <v-card-item> volume: {{ biere["volume"] }} cl </v-card-item>
     </v-card>
   </ul>
+
 </template>
+
 <script lang="ts">
 import { AUTH0_TOKEN } from "@auth0/auth0-vue/dist/typings/token";
 import { stringifyExpression } from "@vue/compiler-core";
@@ -174,7 +181,7 @@ export default {
 ul {
   padding-left: 0px;
 }
-.button-addbrasserie:hover .v-btn__content {
-  background-color: #ff0000;
+#btn-add:hover {
+  color: #ff0000;
 }
 </style>
