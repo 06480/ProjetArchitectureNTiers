@@ -32,7 +32,7 @@
           <div v-if="isAuthenticated">
             <router-link to="/panier" class="nav-link">
               Panier
-              <i class="fa-solid fa-trash-xmark poubelle"></i>
+              <i class="fa-solid fa-trash poubelle"></i>
             </router-link>
           </div>
 
