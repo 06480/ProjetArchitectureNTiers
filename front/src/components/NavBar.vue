@@ -31,7 +31,6 @@
 
           <div v-if="isAuthenticated">
             <router-link to="/panier" class="nav-link">
-              Panier
               <i class="fa-solid fa-cart-shopping poubelle"></i>
             </router-link>
           </div>
@@ -146,6 +145,9 @@ export default {
   background-color: #eff1f5 !important;
 }
 .poubelle {
- font-size: 1em; 
+ font-size: 1em;
+ padding: 0.5em;
+ border: 1px groove black;
+ border-radius: 50%;
 }
 </style>
