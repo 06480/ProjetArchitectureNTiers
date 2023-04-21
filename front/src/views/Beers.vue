@@ -13,6 +13,15 @@
       <v-btn id="btn" @click="createBeer" type="submit" block class="mt-2"
         >Submit</v-btn
       >
+      <v-btn
+        id="btnSuppression"
+        @click="deleteBeer"
+        type="submit"
+        block
+        class="mt-2"
+      >
+        delete (from name)
+      </v-btn>
     </v-form>
   </v-sheet>
   <v-text-field
@@ -70,6 +79,18 @@ export default {
           .toLowerCase()
           .startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
+    },
+    async deleteBeer() {
+      let token = await this.$auth0.getAccessTokenSilently();
+      let idBierre: number;
+      axios
+        .get("https://ubeer.onrender.com/beers")
+        .then((reponse) => {
+          idBierre = reponse.data.filter((e: any) => e["name"])[0];
+        })
+        .then(async (e) => {
+          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`);
+        });
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
