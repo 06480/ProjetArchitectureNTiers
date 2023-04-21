@@ -122,12 +122,12 @@ export default {
   width:100%;
   margin: 1em 0;
 }
-/* .button-addbrasserie:hover {
+.button-addbrasserie:hover .v-btn__content {
   font-weight: bold;
   background: grey !important;
-  color: black;
-} */
-.v-btn__content {
-  color:white;
+  color: white;
 }
+/* .v-btn__content {
+  color:white;
+} */
 </style>
