@@ -77,7 +77,7 @@ export default {
       let token = await this.$auth0.getAccessTokenSilently();
 
       axios
-        .delete(`https://ubeer.onrender.com/breveries/delete/${idBrewery}`, {
+        .delete(`https://ubeer.onrender.com/breweries/delete/${idBrewery}`, {
           headers: {
             authorization: "Bearer " + token,
           },
@@ -117,8 +117,6 @@ export default {
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
-
-      console.log(token);
 
       axios
         .get("https://ubeer.onrender.com/breweries", {
