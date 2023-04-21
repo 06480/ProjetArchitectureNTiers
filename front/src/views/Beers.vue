@@ -1,5 +1,5 @@
 <template>
-  <v-sheet width="300" class="mx-auto">
+  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="brand" label="Brand"></v-text-field>
 
@@ -16,6 +16,7 @@
     </v-form>
   </v-sheet>
   <v-text-field
+    v-if="token !== ''"
     label="entrer le nom d'une bière"
     v-model="saisieUtilisateurBierre"
     @input="construireListeBieresFiltre"
@@ -61,10 +62,12 @@ export default {
           }
         },
       ],
+      token: "",
     };
   },
-  created() {
+  async created() {
     this.initalisation();
+    this.token = await this.$auth0.getAccessTokenSilently();
   },
   methods: {
     construireListeBieresFiltre() {
