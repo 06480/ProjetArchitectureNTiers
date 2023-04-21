@@ -23,8 +23,9 @@
 
   <ul v-for="biere in listeBieresFiltre">
     <v-card>
-      <v-icon prepend-icon="mdi-delete" @click="deleteBeer(biere['_id'])">
-      </v-icon>
+      <!-- <v-icon prepend-icon="mdi-delete" @click="deleteBeer(biere['_id'])">
+      </v-icon> -->
+      <button>supprimer</button>
       <v-card-title>
         {{ biere["brand"] }}
       </v-card-title>
