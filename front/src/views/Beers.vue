@@ -85,6 +85,11 @@ export default {
         })
         .then((r) => {
           console.log("createbeer");
+        })
+        .catch((error) => {
+          console.log("-".repeat(50));
+          console.log(error);
+          console.log("-".repeat(50));
         });
     },
     async initalisation() {
