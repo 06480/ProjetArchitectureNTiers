@@ -13,6 +13,7 @@
     v-if="token !== ''"
     class="button-addbrasserie"
     @click="showForm = !showForm"
+    id="btn-add"
   >
     Ajout d'une brasserie
   </v-btn>
@@ -144,12 +145,12 @@ export default {
   width: 100%;
   margin: 1em 0;
 }searchbar
-.button-addbrasserie:hover span {
+#btn-add:hover span {
   background: rgba(220, 220, 220, 0.2);
   font-weight: bold;
   content: "Ajout d'une brasserie";
 }
-.searchbar:hover span {
+.searchbar:hover {
   background: rgba(176, 196, 222, 0.2);
   font-weight: bold;
   content: "entrer le nom d'une brasserie";
