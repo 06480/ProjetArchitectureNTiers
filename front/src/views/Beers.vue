@@ -10,7 +10,9 @@
         :rules="volumeRules"
       ></v-text-field>
 
-      <v-btn @click="createBeer" type="submit" block class="mt-2">Submit</v-btn>
+      <v-btn id="btn" @click="createBeer" type="submit" block class="mt-2"
+        >Submit</v-btn
+      >
     </v-form>
   </v-sheet>
   <v-text-field
@@ -120,3 +122,9 @@ export default {
   },
 };
 </script>
+
+<style>
+#btn {
+  margin-bottom: 20px;
+}
+</style>
