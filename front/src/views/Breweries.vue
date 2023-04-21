@@ -1,13 +1,18 @@
 <template>
   <!-- barre de recherche -->
-  <v-text-field  v-if="token !== ''" 
+  <v-text-field
+    v-if="token !== ''"
     label="entrer le nom d'une brasserie"
     v-model="saisieUtilisateurBreweries"
     @input="construireListeBreweriesFiltre"
   ></v-text-field>
 
   <!-- bouton d'ajout de brasserie -->
-  <v-btn v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">
+  <v-btn
+    v-if="token !== ''"
+    class="button-addbrasserie"
+    @click="showForm = !showForm"
+  >
     Ajout d'une brasserie
   </v-btn>
   <!-- formulaire d'ajout de brasserie -->
@@ -26,6 +31,9 @@
   <!-- liste des brasseries -->
   <ul v-for="brewery in listeBreweriesFiltre">
     <v-card>
+      <v-btn>
+        <trash-icon @click="deleteBrewery(brewery['_id'])"></trash-icon>
+      </v-btn>
       <v-card-title>
         {{ brewery["name"] }}
       </v-card-title>
@@ -64,6 +72,21 @@ export default {
           .toLowerCase()
           .startsWith(this.saisieUtilisateurBreweries.toLowerCase());
       });
+    },
+    async deleteBrewery(idBrewery: number) {
+      let token = await this.$auth0.getAccessTokenSilently();
+
+      axios
+        .delete(`https://ubeer.onrender.com/breveries/delete/${idBrewery}`, {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        })
+        .catch((error) => {
+          console.log("-".repeat(50));
+          console.log(error);
+          console.log("-".repeat(50));
+        });
     },
     async createBrewery() {
       let token = await this.$auth0.getAccessTokenSilently();
@@ -119,7 +142,7 @@ export default {
 </script>
 <style>
 .button-addbrasserie {
-  width:100%;
+  width: 100%;
   margin: 1em 0;
 }
 .button-addbrasserie:hover {
