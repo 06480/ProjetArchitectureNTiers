@@ -149,7 +149,9 @@ export default {
             console.log("-".repeat(50));
           });
     },
-    async ajoutPanier() {},
+    async ajoutPanier() {
+      console.log(this.user.address);
+    },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
 
