@@ -91,13 +91,16 @@ export default {
         })
         .then((reponse) => {
           idBierre = reponse.data.filter((e: any) => e["name"])[0];
+          console.log(idBierre);
         })
         .then(async (e) => {
-          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
-            headers: {
-              authorization: "Bearer " + token,
-            },
-          });
+          axios
+            .delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
+              headers: {
+                authorization: "Bearer " + token,
+              },
+            })
+            .then((e) => console.log(e));
         });
     },
     async createBeer() {
