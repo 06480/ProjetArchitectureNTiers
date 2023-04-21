@@ -74,7 +74,7 @@ export default {
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      if (this.brand === "" || this.description === "" || this.volume === "") {
+      if (this.brand === "" || this.description === "" || this.volume === "")
         axios
           .post(
             "https://ubeer.onrender.com/beers/create",
@@ -98,7 +98,6 @@ export default {
             console.log(error);
             console.log("-".repeat(50));
           });
-      }
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
