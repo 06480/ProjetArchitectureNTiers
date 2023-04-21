@@ -142,7 +142,7 @@ export default {
 </script>
 <style>
 .v-btn {
-  margin: 1em;
+  margin: 0 1em;
   width: 100%;
 }
 #btn-add:hover span {
