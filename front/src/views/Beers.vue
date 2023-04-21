@@ -127,4 +127,7 @@ export default {
 #btn {
   margin-bottom: 20px;
 }
+ul {
+  padding-left: 0px;
+}
 </style>
