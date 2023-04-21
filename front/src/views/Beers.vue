@@ -176,4 +176,7 @@ export default {
 ul {
   padding-left: 0px;
 }
+.v-btn::before {
+  background-color: grey;
+}
 </style>
