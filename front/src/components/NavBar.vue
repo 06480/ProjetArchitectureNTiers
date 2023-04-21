@@ -22,7 +22,10 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/beers" class="nav-link">Beers</router-link>
+              <router-link to="/beers" class="nav-link">Bières</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/breweries" class="nav-link">Brasseries</router-link>
             </li>
           </ul>
           <ul class="navbar-nav d-none d-md-block">
