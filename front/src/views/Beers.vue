@@ -77,11 +77,21 @@ export default {
     async deleteBeer(idBierre: number) {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
-        headers: {
-          authorization: "Bearer " + token,
-        },
-      });
+      axios
+        .delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        })
+        .then((r) => {
+          console.log("beerdeleted");
+          location.reload();
+        })
+        .catch((error) => {
+          console.log("-".repeat(50));
+          console.log(error);
+          console.log("-".repeat(50));
+        });
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
@@ -103,7 +113,7 @@ export default {
           )
           .then((r) => {
             console.log("createbeer");
-            window.location.href = "https://ubeer12.netlify.app/#/beers";
+            location.reload();
           })
           .catch((error) => {
             console.log("-".repeat(50));
