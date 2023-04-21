@@ -141,7 +141,7 @@ export default {
 };
 </script>
 <style>
-#btn {
+.v-btn {
   margin: 1em;
   width: 100%;
 }
