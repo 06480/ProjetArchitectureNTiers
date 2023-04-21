@@ -71,7 +71,7 @@ export default {
           )
           .then((r) => {
             console.log("createbrewery");
-            location.reload;
+            location.reload();
           })
           .catch((error) => {
             console.log("-".repeat(50));
