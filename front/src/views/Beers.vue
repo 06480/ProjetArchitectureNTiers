@@ -12,6 +12,7 @@
     v-if="token !== ''"
     class="button-addbrasserie"
     @click="showForm = !showForm"
+    :hover="{ background: 'red' }"
   >
     Ajout d'une bière
   </v-btn>
@@ -182,8 +183,5 @@ export default {
 }
 ul {
   padding-left: 0px;
-}
-.button-addbrasserie:hover:before {
-  background-color: grey;
 }
 </style>
