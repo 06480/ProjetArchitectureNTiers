@@ -13,15 +13,7 @@
       <v-btn id="btn" @click="createBeer" type="submit" block class="mt-2"
         >Submit</v-btn
       >
-      <v-btn
-        id="btnSuppression"
-        @click="deleteBeer"
-        type="submit"
-        block
-        class="mt-2"
-      >
-        delete (from name)
-      </v-btn>
+      
     </v-form>
   </v-sheet>
   <v-text-field
@@ -34,6 +26,7 @@
     <v-card>
       <v-card-title>
         {{ biere["brand"] }}
+        <v-icon prepend-icon="mdi-delete" @click="deleteBeer(biere["_id"])"> </v-icon>
       </v-card-title>
       <v-card-item>
         {{ biere["description"] }}
@@ -80,28 +73,20 @@ export default {
           .startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
     },
-    async deleteBeer() {
+    async deleteBeer(idBierre:number) {
       let token = await this.$auth0.getAccessTokenSilently();
-      let idBierre: number;
+
       axios
         .get("https://ubeer.onrender.com/beers", {
           headers: {
             authorization: "Bearer " + token,
           },
-        })
-        .then((reponse) => {
-          console.log(reponse.data)
-          idBierre = reponse.data.filter((e: any) => e["brand"] === this.brand)[0]["_id"];
-          console.log(idBierre);
-        })
-        .then(async (e) => {
-          axios
-            .delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
-              headers: {
-                authorization: "Bearer " + token,
-              },
-            })
-            .then((e) => console.log(e));
+        }).then(async (e) => {
+          axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          });
         });
     },
     async createBeer() {
