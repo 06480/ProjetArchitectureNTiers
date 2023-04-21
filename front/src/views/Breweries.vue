@@ -1,4 +1,16 @@
 <template>
+  <!-- barre de recherche -->
+  <v-text-field
+    label="entrer le nom d'une brasserie"
+    v-model="saisieUtilisateurBreweries"
+    @input="construireListeBreweriesFiltre"
+  ></v-text-field>
+
+  <div class="dropdown-menu dropdown-menu-right">
+    <div class="dropdown-header">AJOUTER UNE BRASSERIE</div>
+    
+  
+  <!-- formulaire d'ajout de brasserie -->
   <v-sheet width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="name" label="Nom"></v-text-field>
@@ -10,11 +22,9 @@
       >
     </v-form>
   </v-sheet>
-  <v-text-field
-    label="entrer le nom d'une brasserie"
-    v-model="saisieUtilisateurBreweries"
-    @input="construireListeBreweriesFiltre"
-  ></v-text-field>
+</div>
+
+  <!-- liste des brasseries -->
   <ul v-for="brewery in listeBreweriesFiltre">
     <v-card>
       <v-card-title>
@@ -25,7 +35,9 @@
       </v-card-item>
     </v-card>
   </ul>
+
 </template>
+
 <script lang="ts">
 import axios from "axios";
 //import { useAuth0 } from '@auth0/auth0-vue';
