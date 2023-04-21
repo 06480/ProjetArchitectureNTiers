@@ -19,12 +19,19 @@ export default {
 .icon-homepage {
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .trinquons {
     width: 40%;
 }
 .icon-ubeer {
     width: 10%;
+    margin: 2em;
+    border-radius: 1em;
+    border: 5px groove white;
 }
 .studiants {
   width: 100%;
