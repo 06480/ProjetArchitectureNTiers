@@ -184,6 +184,6 @@ ul {
   padding-left: 0px;
 }
 #btn-add:hover span {
-  background: silver;
+  background: rgba(220,220,220,0.5);
 }
 </style>
