@@ -70,8 +70,8 @@ export default {
             }
           )
           .then((r) => {
-            console.log("createbeer");
-            window.location.href = "https://ubeer12.netlify.app/#/beers";
+            console.log("createbrewery");
+            location.reload;
           })
           .catch((error) => {
             console.log("-".repeat(50));
