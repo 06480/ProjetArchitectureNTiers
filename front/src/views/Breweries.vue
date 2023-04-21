@@ -4,13 +4,13 @@
       v-model="saisieUtilisateurBreweries"
       @input="construireListeBreweriesFiltre"
     ></v-text-field>
-    <ul v-for="brewerie in listeBreweriesFiltre">
+    <ul v-for="brewery in listeBreweriesFiltre">
       <v-card>
         <v-card-title>
-          {{ brewerie["name"] }}
+          {{ brewery["name"] }}
         </v-card-title>
         <v-card-item>
-        {{ brewerie["address"] }}
+        {{ brewery["address"] }}
         </v-card-item>
       </v-card>
     </ul>
@@ -33,8 +33,8 @@
     methods: {
       construireListeBreweriesFiltre(){
         this.listeBreweriesFiltre = this.listeBreweries.filter(e => {
-          let brand:string = e["name"];
-          return  brand.toLowerCase().startsWith(this.saisieUtilisateurBreweries.toLowerCase());
+          let name:string = e["name"];
+          return  name.toLowerCase().startsWith(this.saisieUtilisateurBreweries.toLowerCase());
         });
   
       },
