@@ -127,4 +127,7 @@ export default {
   background: grey !important;
   color: black;
 } */
+.v-btn__content {
+  color:white;
+}
 </style>
