@@ -1,6 +1,7 @@
 <template>
   <!-- barre de recherche -->
   <v-text-field
+    class="searchbar"
     v-if="token !== ''"
     label="entrer le nom d'une brasserie"
     v-model="saisieUtilisateurBreweries"
@@ -142,18 +143,15 @@ export default {
 .button-addbrasserie {
   width: 100%;
   margin: 1em 0;
-}
-.button-addbrasserie:hover {
+}searchbar
+.button-addbrasserie:hover span {
+  background: rgba(220, 220, 220, 0.2);
   font-weight: bold;
-  color: black !important;
-  background: grey !important;
+  content: "Ajout d'une brasserie";
 }
-.button-addbrasserie:hover .v-btn__content {
+.searchbar:hover span {
+  background: rgba(220, 220, 220, 0.2);
   font-weight: bold;
-  background: grey !important;
-  color: black !important;
+  content: "entrer le nom d'une brasserie";
 }
-/* .v-btn__content {
-  color:white;
-} */
 </style>
