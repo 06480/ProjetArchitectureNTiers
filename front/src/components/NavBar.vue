@@ -149,6 +149,7 @@ export default {
  padding: 0.8em;
  border: 3px groove black;
  border-radius: 1em;
+ background: gainsboro;
 }
 .poubelle:hover {
  border: 3px ridge black;
