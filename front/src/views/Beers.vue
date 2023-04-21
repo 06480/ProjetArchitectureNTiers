@@ -84,7 +84,7 @@ export default {
           },
         })
         .then((r) => {
-          console.log("beerdeleted");
+          console.log("deletebeer");
           location.reload();
         })
         .catch((error) => {
