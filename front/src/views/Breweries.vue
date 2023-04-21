@@ -118,7 +118,7 @@ export default {
 <style>
 .button-addbrasserie {
   width:100%;
-  margin: 0 1em;
+  margin: 1em 0;
 }
 .button-addbrasserie:hover {
   color: white;
