@@ -73,16 +73,19 @@ export default {
       let token = await this.$auth0.getAccessTokenSilently();
 
       axios
-        .post("https://ubeer.onrender.com/beers/create", {
-          headers: {
-            authorization: "Bearer " + token,
-          },
-          data: {
+        .post(
+          "https://ubeer.onrender.com/beers/create",
+          {
             brand: this.brand,
             description: this.description,
             volume: this.volume,
           },
-        })
+          {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }
+        )
         .then((r) => {
           console.log("createbeer");
         })
