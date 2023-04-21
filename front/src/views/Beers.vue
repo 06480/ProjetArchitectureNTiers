@@ -1,7 +1,7 @@
 <template>
   <v-sheet v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
-      <v-text-field v-model="brand" label="Brand"></v-text-field>
+      <v-text-field v-model="brand" label="Marque"></v-text-field>
 
       <v-text-field v-model="description" label="Description"></v-text-field>
       <v-text-field
