@@ -146,8 +146,11 @@ export default {
 }
 .poubelle {
  font-size: 1em;
- padding: 0.5em;
- border: 1px groove black;
- border-radius: 50%;
+ padding: 0.8em;
+ border: 3px groove black;
+ border-radius: 1em;
+}
+.poubelle:hover {
+ border: 3px ridge black;
 }
 </style>
