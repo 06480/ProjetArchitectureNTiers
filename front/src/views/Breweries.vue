@@ -1,16 +1,4 @@
 <template>
-  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
-    <v-form fast-fail @submit.prevent>
-      <v-text-field v-model="name" label="Nom"></v-text-field>
-
-      <v-text-field v-model="address" label="Adresse"></v-text-field>
-
-      <v-btn id="btn" @click="createBrewery" type="submit" block class="mt-2"
-        >Submit</v-btn
-      >
-    </v-form>
-  </v-sheet>
-
   <!-- barre de recherche -->
   <v-text-field  v-if="token !== ''" 
     label="entrer le nom d'une brasserie"
@@ -21,7 +9,7 @@
   <button @click="showForm = !showForm">Ajout d'une brasserie</button>
 
   <!-- formulaire d'ajout de brasserie -->
-  <v-sheet width="300" class="mx-auto">
+  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="name" label="Nom"></v-text-field>
 
