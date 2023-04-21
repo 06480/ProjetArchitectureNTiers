@@ -184,6 +184,6 @@ ul {
   padding-left: 0px;
 }
 #btn-add:hover {
-  color: #ff0000;
+  background: #ff0000;
 }
 </style>
