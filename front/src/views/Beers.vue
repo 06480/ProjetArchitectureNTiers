@@ -75,7 +75,7 @@ export default {
       axios
         .post("https://ubeer.onrender.com/beers/create", {
           headers: {
-            authorization: "Bearer" + token,
+            authorization: "Bearer " + token,
           },
           data: {
             brand: this.brand,
