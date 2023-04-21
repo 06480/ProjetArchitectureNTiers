@@ -88,7 +88,7 @@ export default {
   async created() {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
-    console.log(this.user)
+    console.log(typeof this.user)
   },
   methods: {
     construireListeBieresFiltre() {
