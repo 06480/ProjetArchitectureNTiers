@@ -28,6 +28,11 @@
               <router-link to="/breweries" class="nav-link">Brasseries</router-link>
             </li>
           </ul>
+
+          <div v-if="isAuthenticated">
+            <router-link to="/panier" class="nav-link">Panier</router-link>
+          </div>
+
           <ul class="navbar-nav d-none d-md-block">
             <li v-if="!isAuthenticated && !isLoading" class="nav-item">
               <button
