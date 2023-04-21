@@ -31,7 +31,7 @@ export default {
     width: 10%;
     margin: 2em;
     border-radius: 1em;
-    border: 5px groove white;
+    border: 5px groove black;
 }
 .studiants {
   width: 100%;

@@ -87,8 +87,7 @@ export default {
           console.log("-".repeat(50));
           console.log(error);
           console.log("-".repeat(50));
-        })
-        .finally(() => location.reload());
+        });
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
