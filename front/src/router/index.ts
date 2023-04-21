@@ -5,7 +5,7 @@ import Breweries from "../views/Breweries.vue";
 import Panier from "../views/Panier.vue";
 import Profile from "../views/Profile.vue";
 import { createAuthGuard } from "@auth0/auth0-vue";
-import { App } from 'vue';
+import { App } from 'vue'; 
 
 export function createRouter(app: App): Router {
   return createVueRouter({
