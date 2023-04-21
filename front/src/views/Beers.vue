@@ -174,7 +174,7 @@ export default {
 ul {
   padding-left: 0px;
 }
-.button-addbrasserie .v-btn__content {
+.button-addbrasserie:hover .v-btn__content {
   background-color: #ff0000;
 }
 </style>
