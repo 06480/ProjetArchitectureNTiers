@@ -33,7 +33,7 @@
     methods: {
       construireListeBreweriesFiltre(){
         this.listeBreweriesFiltre = this.listeBreweries.filter(e => {
-          let brand:string = e["brand"];
+          let brand:string = e["name"];
           return  brand.toLowerCase().startsWith(this.saisieUtilisateurBreweries.toLowerCase());
         });
   
