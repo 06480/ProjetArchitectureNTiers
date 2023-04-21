@@ -55,19 +55,17 @@
 </template>
 
 <script lang="ts">
-import { AUTH0_TOKEN } from "@auth0/auth0-vue/dist/typings/token";
 import { stringifyExpression } from "@vue/compiler-core";
 import axios, { Axios } from "axios";
 import { useAuth0 } from "@auth0/auth0-vue";
 //import { useAuth0 } from '@auth0/auth0-vue';
 export default {
   name: "profile-view",
-  async setup() {
-    const auth0 = useAuth0();
-
+   setup() {
+    /*   const auth0 = useAuth0();
     return {
       user: auth0.user,
-    };
+    }; */
   },
   data() {
     return {
@@ -90,15 +88,15 @@ export default {
       showForm: false,
     };
   },
-  async created() {
-    console.log(this.listeBieresFiltre);
+  created() {
+    console.log("avant initialisation");
     this.initalisation();
-    this.token = await this.$auth0.getAccessTokenSilently();
-   
+    console.log("apres initialisation");
   },
   mounted() {
-    console.log(this.user);
-    console.log(this.user.value);
+    console.log("mounted");
+    /*   console.log(this.user);
+    console.log(this.user.value); */
   },
   methods: {
     construireListeBieresFiltre() {
@@ -153,10 +151,11 @@ export default {
           });
     },
     async ajoutPanier() {
-      console.log(this.user);
-      console.log(this.user.address);
+      /*  console.log(this.user);
+      console.log(this.user.address); */
     },
     async initalisation() {
+      console.log("eje");
       let token = await this.$auth0.getAccessTokenSilently();
 
       axios
