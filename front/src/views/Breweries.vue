@@ -144,7 +144,7 @@ export default {
 .button-addbrasserie {
   width: 100%;
   margin: 1em 0;
-}searchbar
+}
 #btn-add:hover span {
   background: rgba(220, 220, 220, 0.2);
   font-weight: bold;
