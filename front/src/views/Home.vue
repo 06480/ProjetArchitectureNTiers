@@ -19,8 +19,5 @@ export default {
 .next-steps .fa-link {
     margin-right: 5px;
 }
-.icon-homepage {
-    width: 20%;
-    margin: auto;
-}
+
 </style>
