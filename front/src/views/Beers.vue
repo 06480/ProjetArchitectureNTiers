@@ -176,7 +176,7 @@ export default {
 ul {
   padding-left: 0px;
 }
-.v-btn::before {
+.button-addbrasserie::before {
   background-color: grey;
 }
 </style>
