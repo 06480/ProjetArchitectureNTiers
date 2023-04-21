@@ -1,7 +1,7 @@
 <template>
   <div class="icon-homepage">
-    <img class="trinquons" src="/icon_homepage.png" alt="Trinquons !">
-    <img class="icon-ubeer" src="/icon_beer.png" alt="Trinquons !">
+    <img class="trinquons"  src="/icon_homepage.png" alt="Trinquons !">
+    <img class="icon-ubeer" src="/Ubeer_icon.png" alt="les étudiants">
     <div class="studiants">
       <p>Julien LEDOUX</p>
       <p>Paul MESSIANT</p>
