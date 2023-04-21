@@ -85,6 +85,7 @@ export default {
         })
         .then((e) => {
           console.log("-".repeat(50));
+          location.reload();
           console.log(e);
           console.log("-".repeat(50));
         })
