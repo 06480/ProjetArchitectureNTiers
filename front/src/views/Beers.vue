@@ -95,10 +95,7 @@ export default {
     this.token = await this.$auth0.getAccessTokenSilently();
   },
   async mounted() {
-    console.log("value");
-    console.log(this.$auth0.user.value);
-    console.log("user");
-    console.log(this.$auth0.user);
+    console.log(this.user);
   },
   methods: {
     construireListeBieresFiltre() {
