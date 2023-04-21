@@ -1,6 +1,5 @@
 <template>
   <img class="icon-homepage" src="/icon_homepage.png" alt="heineken la meilleur biere">
-  Welcome to uBeer By EPSI Students
 </template>
 
 <script lang="ts">
