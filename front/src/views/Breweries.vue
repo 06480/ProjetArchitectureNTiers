@@ -1,5 +1,17 @@
 <template>
-  <v-sheet width="300" class="mx-auto">
+  <!-- barre de recherche -->
+  <v-text-field  v-if="token !== ''" 
+    label="entrer le nom d'une brasserie"
+    v-model="saisieUtilisateurBreweries"
+    @input="construireListeBreweriesFiltre"
+  ></v-text-field>
+
+  <!-- bouton d'ajout de brasserie -->
+  <v-btn v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">
+    Ajout d'une brasserie
+  </v-btn>
+  <!-- formulaire d'ajout de brasserie -->
+  <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="name" label="Nom"></v-text-field>
 
@@ -10,11 +22,8 @@
       >
     </v-form>
   </v-sheet>
-  <v-text-field
-    label="entrer le nom d'une brasserie"
-    v-model="saisieUtilisateurBreweries"
-    @input="construireListeBreweriesFiltre"
-  ></v-text-field>
+
+  <!-- liste des brasseries -->
   <ul v-for="brewery in listeBreweriesFiltre">
     <v-card>
       <v-card-title>
@@ -26,6 +35,7 @@
     </v-card>
   </ul>
 </template>
+
 <script lang="ts">
 import axios from "axios";
 //import { useAuth0 } from '@auth0/auth0-vue';
@@ -33,15 +43,18 @@ export default {
   name: "profile-view",
   data() {
     return {
+      showForm: false,
       listeBreweries: [],
       listeBreweriesFiltre: [],
       saisieUtilisateurBreweries: "",
       name: "",
       address: "",
+      token: "",
     };
   },
-  created() {
+  async created() {
     this.initalisation();
+    this.token = await this.$auth0.getAccessTokenSilently();
   },
   methods: {
     construireListeBreweriesFiltre() {
@@ -104,3 +117,22 @@ export default {
   },
 };
 </script>
+<style>
+.button-addbrasserie {
+  width:100%;
+  margin: 1em 0;
+}
+.button-addbrasserie:hover {
+  font-weight: bold;
+  color: black !important;
+  background: grey !important;
+}
+.button-addbrasserie:hover .v-btn__content {
+  font-weight: bold;
+  background: grey !important;
+  color: black !important;
+}
+/* .v-btn__content {
+  color:white;
+} */
+</style>

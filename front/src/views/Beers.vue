@@ -1,7 +1,7 @@
 <template>
-  <v-sheet width="300" class="mx-auto">
+  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
-      <v-text-field v-model="brand" label="Brand"></v-text-field>
+      <v-text-field v-model="brand" label="Marque"></v-text-field>
 
       <v-text-field v-model="description" label="Description"></v-text-field>
       <v-text-field
@@ -16,6 +16,7 @@
     </v-form>
   </v-sheet>
   <v-text-field
+    v-if="token !== ''"
     label="entrer le nom d'une bière"
     v-model="saisieUtilisateurBierre"
     @input="construireListeBieresFiltre"
@@ -63,11 +64,16 @@ export default {
           }
         },
       ],
+      token: "",
     };
   },
-  created() {
+  async created() {
     this.initalisation();
+<<<<<<< HEAD
     this.mail = useAuth0().user.value.address!;
+=======
+    this.token = await this.$auth0.getAccessTokenSilently();
+>>>>>>> 80bdb4ea0ffcea8ee31feb659118724ce37fa7e4
   },
   methods: {
     async findUserInDatabase() {
