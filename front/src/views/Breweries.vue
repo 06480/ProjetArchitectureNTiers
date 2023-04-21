@@ -125,7 +125,7 @@ export default {
 .button-addbrasserie:hover .v-btn__content {
   font-weight: bold;
   background: grey !important;
-  color: white;
+  color: white !important;
 }
 /* .v-btn__content {
   color:white;
