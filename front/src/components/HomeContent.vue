@@ -1,6 +1,7 @@
 <template>
-  <img class="icon-homepage" src="/icon_homepage.png" alt="heineken la meilleur biere">
-  Welcome to uBeer By EPSI Students
+  <div class="icon-homepage">
+    <img src="/icon_homepage.png" alt="Trinquons !">
+  </div>
 </template>
 
 <script lang="ts">
@@ -10,7 +11,10 @@ export default {
 </script>
 <style>
 .icon-homepage {
-    width: 20%;
-    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.icon-homepage img {
+    width: 40%;
 }
 </style>
