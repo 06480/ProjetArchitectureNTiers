@@ -1,13 +1,13 @@
 <template>
   <!-- barre de recherche -->
   <v-text-field  v-if="token !== ''" 
-    label="entrer le nom d'une brasserie"
+    label="entrer le nomd'une brasserie"
     v-model="saisieUtilisateurBreweries"
     @input="construireListeBreweriesFiltre"
   ></v-text-field>
 
   <!-- bouton d'ajout de brasserie -->
-  <button @click="showForm = !showForm">Ajout d'une brasserie</button>
+  <v-btn v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">Ajout d'une brasserie</v-btn>
   <!-- formulaire d'ajout de brasserie -->
   <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
@@ -115,3 +115,8 @@ export default {
   },
 };
 </script>
+<style>
+.button-addbrasserie {
+  width:100%;
+}
+</style>
