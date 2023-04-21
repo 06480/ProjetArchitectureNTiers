@@ -90,10 +90,7 @@ export default {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
     await this.findUserInDatabase();
-<<<<<<< HEAD
     console.log(this.user)
-=======
->>>>>>> a8301b2e95f8c6c907f8def8faec09d177a66482
   },
   methods: {
     async findUserInDatabase() {
