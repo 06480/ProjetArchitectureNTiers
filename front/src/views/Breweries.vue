@@ -150,7 +150,7 @@ export default {
   content: "Ajout d'une brasserie";
 }
 .searchbar:hover span {
-  background: rgba(220, 220, 220, 0.2);
+  background: rgba(176, 196, 222, 0.2);
   font-weight: bold;
   content: "entrer le nom d'une brasserie";
 }
