@@ -13,7 +13,7 @@
     class="button-addbrasserie"
     @click="showForm = !showForm"
   >
-    Ajout d'une brasserie
+    Ajout d'une bière
   </v-btn>
 
   <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
