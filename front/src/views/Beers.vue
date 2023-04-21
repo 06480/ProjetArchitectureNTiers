@@ -1,13 +1,12 @@
 <template>
   <!-- barre de recherche -->
-    <v-text-field
+  <v-text-field
     v-if="token !== ''"
     label="entrer le nom d'une bière"
     v-model="saisieUtilisateurBierre"
     @input="construireListeBieresFiltre"
-    >
-    </v-text-field>
-  
+  >
+  </v-text-field>
 
   <!-- bouton d'ajout de brasserie -->
   <v-btn
@@ -53,7 +52,6 @@
       <v-card-item> volume: {{ biere["volume"] }} cl </v-card-item>
     </v-card>
   </ul>
-
 </template>
 
 <script lang="ts">
@@ -97,7 +95,7 @@ export default {
     this.token = await this.$auth0.getAccessTokenSilently();
   },
   async mounted() {
-    console.log(this.$auth0.user);
+    console.log(this.$auth0.user.value + "---------" + this.$auth0.user);
   },
   methods: {
     construireListeBieresFiltre() {
@@ -184,6 +182,6 @@ ul {
   padding-left: 0px;
 }
 #btn-add:hover span {
-  background: rgba(220,220,220,0.5);
+  background: rgba(220, 220, 220, 0.5);
 }
 </style>
