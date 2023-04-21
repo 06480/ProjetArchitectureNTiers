@@ -96,6 +96,7 @@ export default {
   },
   async mounted() {
     console.log(this.user);
+    console.log(this.user.value);
   },
   methods: {
     construireListeBieresFiltre() {
