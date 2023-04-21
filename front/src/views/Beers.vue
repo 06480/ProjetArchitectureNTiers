@@ -90,7 +90,10 @@ export default {
           },
         })
         .then((reponse) => {
-          idBierre = reponse.data.filter((e: any) => e["name"])[0];
+          idBierre = reponse.data.filter((e: any) => {
+            console.log(e["name"]);
+            return e["name"];
+          })[0];
           console.log(idBierre);
         })
         .then(async (e) => {
