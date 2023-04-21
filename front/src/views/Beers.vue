@@ -90,9 +90,10 @@ export default {
       showForm: false,
     };
   },
- async created() {
+  async created() {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
+    console.log(this.listeBieresFiltre);
   },
   mounted() {
     console.log(this.user);
