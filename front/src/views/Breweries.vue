@@ -120,4 +120,7 @@ export default {
   width:100%;
   margin: 0 1em;
 }
+.button-addbrasserie:hover {
+  color: white;
+}
 </style>
