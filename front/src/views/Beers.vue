@@ -183,7 +183,7 @@ export default {
 ul {
   padding-left: 0px;
 }
-.button-addbrasserie::before {
+.v-btn:hover:before {
   background-color: grey;
 }
 </style>
