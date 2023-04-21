@@ -6,10 +6,10 @@
     @input="construireListeBreweriesFiltre"
   ></v-text-field>
 
+  <!-- bouton d'ajout de brasserie -->
   <button @click="showForm = !showForm">Ajout d'une brasserie</button>
-
   <!-- formulaire d'ajout de brasserie -->
-  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
+  <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="name" label="Nom"></v-text-field>
 
