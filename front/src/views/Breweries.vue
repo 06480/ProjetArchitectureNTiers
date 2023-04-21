@@ -149,7 +149,7 @@ export default {
   font-weight: bold;
   content: "Ajout d'une brasserie";
 }
-.searchbar:hover span {
+.searchbar:hover {
   background: rgba(176, 196, 222, 0.2);
   font-weight: bold;
   content: "entrer le nom d'une brasserie";
