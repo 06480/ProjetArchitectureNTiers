@@ -90,6 +90,7 @@ export default {
         )
         .then((r) => {
           console.log("createbeer");
+          window.location.href = "https://ubeer12.netlify.app/#/beers";
         })
         .catch((error) => {
           console.log("-".repeat(50));
