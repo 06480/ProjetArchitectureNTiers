@@ -7,7 +7,7 @@
   ></v-text-field>
 
   <!-- bouton d'ajout de brasserie -->
-  <v-button v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">Ajout d'une brasserie</v-button>
+  <v-btn v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">Ajout d'une brasserie</v-btn>
   <!-- formulaire d'ajout de brasserie -->
   <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
