@@ -26,9 +26,11 @@
       <v-list-item
         link
         prepend-icon="mdi-delete"
-        title="Trash"
+        title="supprimer"
         @click="deleteBeer(biere['_id'])"
-      ></v-list-item>
+      >
+      <p>test</p>
+    </v-list-item>
 
       <v-card-title>
         {{ biere["brand"] }}
