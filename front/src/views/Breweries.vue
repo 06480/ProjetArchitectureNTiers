@@ -33,7 +33,7 @@
   <!-- liste des brasseries -->
   <ul v-for="brewery in listeBreweriesFiltre">
     <v-card>
-      <v-btn>
+      <v-btn id="btn-trash">
         <trash-icon @click="deleteBrewery(brewery['_id'])"></trash-icon>
       </v-btn>
       <v-card-title>
@@ -154,5 +154,9 @@ export default {
   background: rgba(176, 196, 222, 0.2);
   font-weight: bold;
   content: "entrer le nom d'une brasserie";
+}
+#btn-trash:hover {
+  background: rgba(220, 220, 220, 0.2);
+  font-weight: bold;
 }
 </style>
