@@ -142,7 +142,7 @@ export default {
 </script>
 <style>
 #btn {
-  margin: 1em 0;
+  margin: 1em;
   width: 100%;
 }
 #btn-add:hover span {
