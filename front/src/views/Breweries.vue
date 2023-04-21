@@ -1,5 +1,5 @@
 <template>
-  <v-sheet width="300" class="mx-auto">
+  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="name" label="Nom"></v-text-field>
 
@@ -38,10 +38,12 @@ export default {
       saisieUtilisateurBreweries: "",
       name: "",
       address: "",
+      token: "",
     };
   },
-  created() {
+  async created() {
     this.initalisation();
+    this.token = await this.$auth0.getAccessTokenSilently();
   },
   methods: {
     construireListeBreweriesFiltre() {
