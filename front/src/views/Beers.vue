@@ -86,29 +86,30 @@ export default {
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      axios
-        .post(
-          "https://ubeer.onrender.com/beers/create",
-          {
-            brand: this.brand,
-            description: this.description,
-            volume: this.volume,
-          },
-          {
-            headers: {
-              authorization: "Bearer " + token,
+      if (this.brand !== "" && this.description !== "" && this.volume !== "")
+        axios
+          .post(
+            "https://ubeer.onrender.com/beers/create",
+            {
+              brand: this.brand,
+              description: this.description,
+              volume: this.volume,
             },
-          }
-        )
-        .then((r) => {
-          console.log("createbeer");
-          window.location.href = "https://ubeer12.netlify.app/#/beers";
-        })
-        .catch((error) => {
-          console.log("-".repeat(50));
-          console.log(error);
-          console.log("-".repeat(50));
-        });
+            {
+              headers: {
+                authorization: "Bearer " + token,
+              },
+            }
+          )
+          .then((r) => {
+            console.log("createbeer");
+            window.location.href = "https://ubeer12.netlify.app/#/beers";
+          })
+          .catch((error) => {
+            console.log("-".repeat(50));
+            console.log(error);
+            console.log("-".repeat(50));
+          });
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
