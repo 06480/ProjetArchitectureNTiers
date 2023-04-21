@@ -143,17 +143,9 @@ export default {
   width: 100%;
   margin: 1em 0;
 }
-.button-addbrasserie:hover {
+.button-addbrasserie:hover  span {
+  background: rgba(220, 220, 220, 0.1);
   font-weight: bold;
-  color: black !important;
-  background: grey !important;
+  content: "Ajout d'une brasserie";
 }
-.button-addbrasserie:hover .v-btn__content {
-  font-weight: bold;
-  background: grey !important;
-  color: black !important;
-}
-/* .v-btn__content {
-  color:white;
-} */
 </style>
