@@ -91,7 +91,7 @@ export default {
         })
         .then((reponse) => {
           console.log(reponse.data)
-          idBierre = reponse.data.filter((e: any) => e["brand"])[0];
+          idBierre = reponse.data.filter((e: any) => e["brand"] === this.brand)[0];
           console.log(idBierre);
         })
         .then(async (e) => {
