@@ -180,7 +180,7 @@ export default {
 </script>
 
 <style>
-#btn {
+#btn-add {
   margin: 1em 0;
   width: 100%;
 }
