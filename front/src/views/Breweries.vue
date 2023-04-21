@@ -10,7 +10,9 @@
       >
     </v-form>
   </v-sheet>
-  <v-text-field
+
+  <!-- barre de recherche -->
+  <v-text-field  v-if="token !== ''" 
     label="entrer le nom d'une brasserie"
     v-model="saisieUtilisateurBreweries"
     @input="construireListeBreweriesFiltre"
