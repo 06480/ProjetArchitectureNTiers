@@ -12,6 +12,7 @@
     v-if="token !== ''"
     class="button-addbrasserie"
     @click="showForm = !showForm"
+    :hover="{ background: 'red' }"
   >
     Ajout d'une bière
   </v-btn>
@@ -57,9 +58,16 @@ import { useAuth0 } from "@auth0/auth0-vue";
 //import { useAuth0 } from '@auth0/auth0-vue';
 export default {
   name: "profile-view",
+  setup() {
+    const auth0 = useAuth0();
+
+    return {
+      user: auth0.user,
+    };
+  },
   data() {
     return {
-      mail: "",
+      mail: this.user,
       listeBieres: [],
       listeBieresFiltre: [],
       saisieUtilisateurBierre: "",
@@ -81,9 +89,9 @@ export default {
   },
   async created() {
     this.initalisation();
-    this.mail = useAuth0().user.value.address!;
     this.token = await this.$auth0.getAccessTokenSilently();
     await this.findUserInDatabase();
+    console.log(this.user)
   },
   methods: {
     async findUserInDatabase() {
