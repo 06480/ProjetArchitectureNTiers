@@ -183,6 +183,7 @@ ul {
 }
 #btn-add:hover span {
   background: rgba(220, 220, 220, 0.2);
+  font-weight: bold;
   content: "Ajout d'une bière";
 }
 </style>
