@@ -134,4 +134,7 @@ export default {
 .logo-heineken{
   width:7%;
 }
+.navbar {
+  background-color: #eff1f5;
+}
 </style>
