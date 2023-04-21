@@ -23,7 +23,8 @@
 
   <ul v-for="biere in listeBieresFiltre">
     <v-card>
-       <v-icon prepend-icon="mdi-delete" @click='deleteBeer(biere["_id"])'> </v-icon>
+      <v-icon prepend-icon="mdi-delete" @click="deleteBeer(biere['_id'])">
+      </v-icon>
       <v-card-title>
         {{ biere["brand"] }}
       </v-card-title>
@@ -72,10 +73,14 @@ export default {
           .startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
     },
-    async deleteBeer(idBierre:number) {
+    async deleteBeer(idBierre: number) {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`);
+      axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`, {
+        headers: {
+          authorization: "Bearer " + token,
+        },
+      });
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
