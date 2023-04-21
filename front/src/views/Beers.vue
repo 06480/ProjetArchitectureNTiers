@@ -1,5 +1,22 @@
 <template>
-  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
+  <!-- barre de recherche -->
+  <v-text-field
+    v-if="token !== ''"
+    label="entrer le nom d'une bière"
+    v-model="saisieUtilisateurBierre"
+    @input="construireListeBieresFiltre"
+  ></v-text-field>
+
+  <!-- bouton d'ajout de brasserie -->
+  <v-btn
+    v-if="token !== ''"
+    class="button-addbrasserie"
+    @click="showForm = !showForm"
+  >
+    Ajout d'une brasserie
+  </v-btn>
+
+  <v-sheet v-show="showForm" v-if="token !== ''" width="300" class="mx-auto">
     <v-form fast-fail @submit.prevent>
       <v-text-field v-model="brand" label="Marque"></v-text-field>
 
@@ -15,12 +32,6 @@
       >
     </v-form>
   </v-sheet>
-  <v-text-field
-    v-if="token !== ''"
-    label="entrer le nom d'une bière"
-    v-model="saisieUtilisateurBierre"
-    @input="construireListeBieresFiltre"
-  ></v-text-field>
 
   <ul v-for="biere in listeBieresFiltre">
     <v-card>
@@ -65,13 +76,14 @@ export default {
         },
       ],
       token: "",
+      showForm: false,
     };
   },
   async created() {
     this.initalisation();
     this.mail = useAuth0().user.value.address!;
     this.token = await this.$auth0.getAccessTokenSilently();
-    await this.findUserInDatabase()
+    await this.findUserInDatabase();
   },
   methods: {
     async findUserInDatabase() {
