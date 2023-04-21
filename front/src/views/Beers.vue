@@ -90,7 +90,7 @@ export default {
       showForm: false,
     };
   },
-  async created() {
+  created() {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
   },
