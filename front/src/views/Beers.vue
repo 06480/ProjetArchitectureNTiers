@@ -120,8 +120,6 @@ export default {
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      console.log(token);
-
       axios
         .get("https://ubeer.onrender.com/beers", {
           headers: {
