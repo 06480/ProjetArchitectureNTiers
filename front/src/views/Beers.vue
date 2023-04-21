@@ -66,7 +66,6 @@ export default {
   },
   data() {
     return {
-      mail: this.user,
       listeBieres: [],
       listeBieresFiltre: [],
       saisieUtilisateurBierre: "",
@@ -89,17 +88,9 @@ export default {
   async created() {
     this.initalisation();
     this.token = await this.$auth0.getAccessTokenSilently();
-    await this.findUserInDatabase();
     console.log(this.user)
   },
   methods: {
-    async findUserInDatabase() {
-      axios
-        .get(`https://ubeer.onrender.com/findUserByMail/${this.mail}`)
-        .then((reponse) => {
-          console.log(reponse.data);
-        });
-    },
     construireListeBieresFiltre() {
       this.listeBieresFiltre = this.listeBieres.filter((e) => {
         let brand: string = e["brand"];
