@@ -1,5 +1,15 @@
 <template>
-  <!-- barre de recherche -->
+  <v-sheet v-if="token !== ''" width="300" class="mx-auto">
+    <v-form fast-fail @submit.prevent>
+      <v-text-field v-model="name" label="Nom"></v-text-field>
+
+      <v-text-field v-model="address" label="Adresse"></v-text-field>
+
+      <v-btn id="btn" @click="createBrewery" type="submit" block class="mt-2"
+        >Submit</v-btn
+      >
+    </v-form>
+  </v-sheet>
   <v-text-field
     label="entrer le nom d'une brasserie"
     v-model="saisieUtilisateurBreweries"
@@ -32,7 +42,6 @@
       </v-card-item>
     </v-card>
   </ul>
-
 </template>
 
 <script lang="ts">
@@ -48,10 +57,12 @@ export default {
       saisieUtilisateurBreweries: "",
       name: "",
       address: "",
+      token: "",
     };
   },
-  created() {
+  async created() {
     this.initalisation();
+    this.token = await this.$auth0.getAccessTokenSilently();
   },
   methods: {
     construireListeBreweriesFiltre() {
