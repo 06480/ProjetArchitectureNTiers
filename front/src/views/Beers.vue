@@ -97,7 +97,7 @@ export default {
     this.token = await this.$auth0.getAccessTokenSilently();
   },
   async mounted() {
-    console.log(this.user);
+    console.log(this.user.address);
   },
   methods: {
     construireListeBieresFiltre() {
