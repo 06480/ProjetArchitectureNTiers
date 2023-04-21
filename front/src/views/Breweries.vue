@@ -1,14 +1,13 @@
 <template>
   <!-- barre de recherche -->
   <v-text-field  v-if="token !== ''" 
-    label="entrer le nomd'une brasserie"
+    label="entrer le nom d'une brasserie"
     v-model="saisieUtilisateurBreweries"
     @input="construireListeBreweriesFiltre"
   ></v-text-field>
 
   <!-- bouton d'ajout de brasserie -->
   <v-btn v-if="token !== ''" class="button-addbrasserie" @click="showForm = !showForm">
-    <span style="font-weight: bold; font-size: 1.2em;">+</span>
     Ajout d'une brasserie
   </v-btn>
   <!-- formulaire d'ajout de brasserie -->
@@ -126,5 +125,6 @@ export default {
 .button-addbrasserie:hover {
   font-weight: bold;
   background: grey;
+  color: white;
 }
 </style>
