@@ -122,9 +122,9 @@ export default {
   width:100%;
   margin: 1em 0;
 }
-.button-addbrasserie:hover {
+/* .button-addbrasserie:hover {
   font-weight: bold;
   background: grey !important;
   color: black;
-}
+} */
 </style>
