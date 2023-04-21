@@ -118,6 +118,6 @@ export default {
 <style>
 .button-addbrasserie {
   width:100%;
-  margin: 1em;
+  margin: 0 1em;
 }
 </style>
