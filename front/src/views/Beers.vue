@@ -26,7 +26,6 @@
        <v-icon prepend-icon="mdi-delete" @click='deleteBeer(biere["_id"])'> </v-icon>
       <v-card-title>
         {{ biere["brand"] }}
-       
       </v-card-title>
       <v-card-item>
         {{ biere["description"] }}
@@ -73,38 +72,37 @@ export default {
           .startsWith(this.saisieUtilisateurBierre.toLowerCase());
       });
     },
-    async deleteBeer(idBeer:number){
+    async deleteBeer(idBierre:number) {
       let token = await this.$auth0.getAccessTokenSilently();
-      axios.delete(`https://ubeer.onrender.com/beers/delete/${idBeer}`)
+
+      axios.delete(`https://ubeer.onrender.com/beers/delete/${idBierre}`);
     },
     async createBeer() {
       let token = await this.$auth0.getAccessTokenSilently();
 
-      if (this.brand === "" || this.description === "" || this.volume === "") {
-        axios
-          .post(
-            "https://ubeer.onrender.com/beers/create",
-            {
-              brand: this.brand,
-              description: this.description,
-              volume: this.volume,
+      axios
+        .post(
+          "https://ubeer.onrender.com/beers/create",
+          {
+            brand: this.brand,
+            description: this.description,
+            volume: this.volume,
+          },
+          {
+            headers: {
+              authorization: "Bearer " + token,
             },
-            {
-              headers: {
-                authorization: "Bearer " + token,
-              },
-            }
-          )
-          .then((r) => {
-            console.log("createbeer");
-            window.location.href = "https://ubeer12.netlify.app/#/beers";
-          })
-          .catch((error) => {
-            console.log("-".repeat(50));
-            console.log(error);
-            console.log("-".repeat(50));
-          });
-      }
+          }
+        )
+        .then((r) => {
+          console.log("createbeer");
+          window.location.href = "https://ubeer12.netlify.app/#/beers";
+        })
+        .catch((error) => {
+          console.log("-".repeat(50));
+          console.log(error);
+          console.log("-".repeat(50));
+        });
     },
     async initalisation() {
       let token = await this.$auth0.getAccessTokenSilently();
