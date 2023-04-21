@@ -1,6 +1,12 @@
 <template>
   <div class="icon-homepage">
-    <img src="/icon_homepage.png" alt="Trinquons !">
+    <img class="trinquons" src="/icon_homepage.png" alt="Trinquons !">
+    <img class="icon-ubeer" src="/icon_beer.png" alt="Trinquons !">
+    <div class="studiants">
+      <p>Julien LEDOUX</p>
+      <p>Paul MESSIANT</p>
+      <p>Kristen BELKADI</p>
+    </div>
   </div>
 </template>
 
@@ -14,7 +20,17 @@ export default {
     width: 100%;
     text-align: center;
 }
-.icon-homepage img {
+.trinquons {
     width: 40%;
+}
+.icon-ubeer {
+    width: 10%;
+}
+.studiants {
+  width: 100%;
+  font-size: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>
