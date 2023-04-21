@@ -26,6 +26,7 @@
       <v-btn>
         <trash-icon @click="deleteBeer(biere['_id'])"></trash-icon>
       </v-btn>
+      <v-btn> Ajouter au panier </v-btn>
       <v-card-title>
         {{ biere["brand"] }}
       </v-card-title>
