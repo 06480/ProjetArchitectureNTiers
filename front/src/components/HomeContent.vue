@@ -12,9 +12,9 @@ export default {
 <style>
 .icon-homepage {
     width: 100%;
+    text-align: center;
 }
 .icon-homepage img {
-    width: 20%;
-    margin: auto;
+    width: 40%;
 }
 </style>
