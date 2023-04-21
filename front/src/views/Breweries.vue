@@ -142,7 +142,8 @@ export default {
 </script>
 <style>
 #btn {
-  margin-bottom: 20px;
+  margin: 1em 0;
+  width: 100%;
 }
 #btn-add:hover span {
   background: rgba(220, 220, 220, 0.2);

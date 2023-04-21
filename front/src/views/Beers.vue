@@ -180,7 +180,8 @@ export default {
 
 <style>
 #btn {
-  margin-bottom: 20px;
+  margin: 1em 0;
+  width: 100%;
 }
 ul {
   padding-left: 0px;

@@ -30,7 +30,10 @@
           </ul>
 
           <div v-if="isAuthenticated">
-            <router-link to="/panier" class="nav-link">Panier</router-link>
+            <router-link to="/panier" class="nav-link">
+              Panier
+              <i class="fa-solid fa-trash-xmark poubelle"></i>
+            </router-link>
           </div>
 
           <ul class="navbar-nav d-none d-md-block">
@@ -141,5 +144,8 @@ export default {
 }
 .navbar {
   background-color: #eff1f5 !important;
+}
+.poubelle {
+ font-size: 1em; 
 }
 </style>
