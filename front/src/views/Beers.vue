@@ -69,11 +69,8 @@ export default {
   },
   async created() {
     this.initalisation();
-<<<<<<< HEAD
     this.mail = useAuth0().user.value.address!;
-=======
     this.token = await this.$auth0.getAccessTokenSilently();
->>>>>>> 80bdb4ea0ffcea8ee31feb659118724ce37fa7e4
   },
   methods: {
     async findUserInDatabase() {
