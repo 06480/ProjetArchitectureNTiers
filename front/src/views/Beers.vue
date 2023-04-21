@@ -39,7 +39,7 @@
   <!-- liste des bières -->
   <ul v-for="biere in listeBieresFiltre">
     <v-card>
-      <v-btn>
+      <v-btn id="btn-trash">
         <trash-icon @click="deleteBeer(biere['_id'])"></trash-icon>
       </v-btn>
       <v-btn @click="ajoutPanier()"> Ajouter au panier </v-btn>
@@ -191,5 +191,9 @@ ul {
   background: rgba(220, 220, 220, 0.2);
   font-weight: bold;
   content: "Ajout d'une bière";
+}
+#btn-trash:hover {
+  background: rgba(220, 220, 220, 0.2);
+  font-weight: bold;
 }
 </style>
