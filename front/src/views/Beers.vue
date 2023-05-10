@@ -1,6 +1,7 @@
 <template>
   <!-- barre de recherche -->
   <v-text-field
+    class="searchbar"
     v-if="token !== ''"
     label="entrer le nom d'une bière"
     v-model="saisieUtilisateurBierre"
@@ -88,10 +89,9 @@ export default {
       showForm: false,
     };
   },
-  created() {
-    console.log("avant initialisation");
+  async created() {
     this.initalisation();
-    console.log("apres initialisation");
+    this.token = await this.$auth0.getAccessTokenSilently();
   },
   mounted() {
     console.log("mounted");
